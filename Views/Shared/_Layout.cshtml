@@ -1,0 +1,297 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - JobSphere</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+
+        /* ================= BODY ================= */
+
+        body {
+            padding-top: 70px;
+            margin: 0;
+            background-color: #f5f7fb;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333333;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .main-navbar {
+            background-color: #ffffff;
+            border: none;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+
+        /* ================= JOBSPHERE NAME ================= */
+
+        .navbar-brand {
+            color: #063970 !important;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            line-height: 50px;
+        }
+
+            .navbar-brand:hover {
+                color: #042b55 !important;
+            }
+
+
+        /* ================= NAVIGATION LINKS ================= */
+
+        .navbar-nav > li > a {
+            color: #333333 !important;
+            font-size: 14px;
+            font-weight: 500;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+            .navbar-nav > li > a:hover {
+                color: #063970 !important;
+                background-color: transparent !important;
+            }
+
+
+        /* ================= LOGO ICON ================= */
+
+        .logo-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            margin-right: 7px;
+            border-radius: 50%;
+            background-color: #063970;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+
+        /* ================= MAIN CONTENT ================= */
+
+        .body-content {
+            min-height: calc(100vh - 160px);
+            padding-top: 25px;
+            padding-bottom: 30px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .site-footer {
+            border-top: 1px solid #e5e7eb;
+            background-color: #ffffff;
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            color: #777777;
+            font-size: 13px;
+        }
+
+            .site-footer p {
+                margin: 0;
+            }
+
+
+        /* ================= BUTTONS ================= */
+
+        .btn-primary {
+            background-color: #063970;
+            border-color: #063970;
+        }
+
+            .btn-primary:hover,
+            .btn-primary:focus {
+                background-color: #042b55;
+                border-color: #042b55;
+            }
+
+
+        /* ================= HEADINGS ================= */
+
+        h1,
+        h2,
+        h3 {
+            color: #063970;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @@media screen and (max-width: 767px) {
+
+            .navbar-brand {
+                font-size: 21px;
+            }
+
+            .navbar-nav > li > a {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+
+            .body-content {
+                padding-top: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav class="navbar navbar-fixed-top main-navbar">
+
+        <div class="container">
+
+            <div class="navbar-header">
+
+                <button type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse">
+
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+
+                @Html.ActionLink(
+                    "JobSphere",
+                    "Index",
+                    "Home",
+                    new { area = "" },
+                    new { @class = "navbar-brand" }
+                )
+
+            </div>
+
+
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        @Html.ActionLink(
+                            "Home",
+                            "Index",
+                            "Home"
+                        )
+                    </li>
+
+                    <li>
+                        @Html.ActionLink(
+                            "Jobs",
+                            "EmployeePageLoad",
+                            "JobSearch"
+                        )
+                    </li>
+
+                    <li>
+                        @Html.ActionLink(
+                            "Login",
+                            "LoginPageLoad",
+                            "Login"
+                        )
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= PAGE CONTENT ================= -->
+
+    <div class="container body-content">
+
+        @RenderBody()
+
+        <footer class="site-footer">
+
+            <p>
+                &copy; @DateTime.Now.Year - JobSphere
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- ================= SCRIPTS ================= -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+
+
+
+
+
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@

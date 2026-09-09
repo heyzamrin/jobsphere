@@ -1,0 +1,578 @@
+﻿
+@model MVCProjectOne.Models.EmployeeInsertClass
+
+@{
+    ViewBag.Title = "Employee Registration";
+}
+
+<style>
+
+    body {
+        background-color: #f5f7fb;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .employee-container {
+        width: 500px;
+        margin: 35px auto;
+        background-color: #ffffff;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border: 1px solid #edf0f4;
+    }
+
+
+        /* ================= TITLE ================= */
+
+        .employee-container h1 {
+            text-align: center;
+            margin: 0 0 28px;
+            color: #063970;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+
+    /* ================= FORM ================= */
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #444444;
+            font-size: 14px;
+        }
+
+
+    /* ================= INPUT ================= */
+
+    .form-control {
+        width: 100%;
+        height: 42px;
+        padding: 10px 12px;
+        border: 1px solid #d5d9e0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 14px;
+        outline: none;
+        display: block;
+    }
+
+        .form-control:focus {
+            border-color: #063970;
+            box-shadow: 0 0 0 2px rgba(6,57,112,0.08);
+        }
+
+
+    /* ================= TEXTAREA ================= */
+
+    textarea.form-control {
+        height: 80px;
+        resize: vertical;
+    }
+
+
+    /* ================= GENDER ================= */
+
+    .gender-section {
+        margin-top: 5px;
+    }
+
+        .gender-section label {
+            display: inline-block;
+            margin-right: 20px;
+            font-weight: normal;
+            color: #444444;
+        }
+
+        .gender-section input {
+            margin-right: 5px;
+            accent-color: #063970;
+        }
+
+
+    /* ================= FILE ================= */
+
+    .file-input {
+        width: 100%;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+
+    /* ================= VALIDATION ================= */
+
+    .validation {
+        color: #d9534f;
+        font-size: 13px;
+        display: block;
+        margin-top: 5px;
+    }
+
+
+    /* ================= BUTTON ================= */
+
+    .button-section {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .insert-btn {
+        width: 100%;
+        height: 44px;
+        padding: 10px;
+        background-color: #063970;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+        .insert-btn:hover {
+            background-color: #042b55;
+        }
+
+
+    /* ================= MESSAGE ================= */
+
+    .success-message {
+        margin-top: 15px;
+        padding: 10px;
+        color: #168044;
+        background-color: #e8f7ee;
+        border: 1px solid #b7e4c7;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @@media (max-width: 600px) {
+
+        .employee-container {
+            width: auto;
+            margin: 20px 10px;
+            padding: 25px 20px;
+        }
+
+            .employee-container h1 {
+                font-size: 24px;
+            }
+    }
+</style>
+
+
+<div class="employee-container">
+
+    <h1>Employee Registration</h1>
+
+    @using (Html.BeginForm("InsertEmployeeclick", "EmployeeReg", FormMethod.Post,
+        new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="form-group">
+
+            <label>Name:</label>
+
+            @Html.TextBoxFor(m => m.eName, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.eName, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Age:</label>
+
+            @Html.TextBoxFor(m => m.eAge, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.eAge, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Address:</label>
+
+            @Html.TextAreaFor(m => m.eAddress, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.eAddress, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Phone:</label>
+
+            @Html.TextBoxFor(m => m.ePhone, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.ePhone, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Email:</label>
+
+            @Html.TextBoxFor(m => m.eEmail, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.eEmail, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Qualification:</label>
+
+            @Html.TextBoxFor(m => m.eQualification, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.eQualification, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Skill:</label>
+
+            @Html.TextBoxFor(m => m.eSkill, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(m => m.eSkill, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Experience:</label>
+
+            @Html.DropDownListFor(
+                m => m.eExperience,
+                new SelectList(
+                    new[]
+                    {
+                        new { Value = "", Text = "-- Select Experience --" },
+                        new { Value = "Nil", Text = "Nil" },
+                        new { Value = "1 Year", Text = "1 Year" },
+                        new { Value = "2 Years", Text = "2 Years" },
+                        new { Value = "3 Years", Text = "3 Years" },
+                        new { Value = "4 Years", Text = "4 Years" },
+                        new { Value = "5+ Years", Text = "5+ Years" }
+                    },
+                    "Value",
+                    "Text"
+                ),
+                new
+                {
+                    @class = "form-control"
+                }
+            )
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Photo:</label>
+
+            @Html.TextBox(
+                "file",
+                "",
+                new
+                {
+                    type = "file",
+                    @class = "file-input"
+                }
+            )
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Gender:</label>
+
+            <div class="gender-section">
+
+                <label>
+                    @Html.RadioButtonFor(m => m.eGender, "Male")
+                    Male
+                </label>
+
+                <label>
+                    @Html.RadioButtonFor(m => m.eGender, "Female")
+                    Female
+                </label>
+
+                <label>
+                    @Html.RadioButtonFor(m => m.eGender, "Other")
+                    Other
+                </label>
+
+            </div>
+
+            @Html.ValidationMessageFor(
+                m => m.eGender,
+                "",
+                new
+                {
+                    @class = "validation"
+                }
+            )
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Password:</label>
+
+            @Html.PasswordFor(m => m.ePassword, new
+            {
+                @class = "form-control"
+            })
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Confirm Password:</label>
+
+            @Html.PasswordFor(m => m.eConfirmPassword, new
+            {
+                @class = "form-control"
+            })
+
+            @Html.ValidationMessageFor(
+                m => m.eConfirmPassword,
+                "",
+                new
+                {
+                    @class = "validation"
+                }
+            )
+
+        </div>
+
+
+        <div class="button-section">
+
+            <input type="submit"
+                   value="Insert"
+                   class="insert-btn" />
+
+            @if (Model != null && !string.IsNullOrEmpty(Model.eMsg))
+            {
+                <div class="success-message">
+                    @Model.eMsg
+                </div>
+            }
+
+        </div>
+
+    }
+
+</div>
+
+
+
+
+@*@model MVCProjectOne.Models.EmployeeInsertClass
+    @{
+        ViewBag.Title = "InsertEmployeePageLoad";
+    }
+
+    <h1>Employee Registration</h1>
+
+    <div>
+        @using (Html.BeginForm("InsertEmployeeclick", "EmployeeReg", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+        {
+            <div>
+                <label>Name:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.eName)
+                @Html.ValidationMessageFor(m => m.eName)
+            </div>
+
+            <div>
+                <label>Age:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.eAge)
+                @Html.ValidationMessageFor(m => m.eAge)
+            </div>
+
+            <div>
+                <label>Address:</label>
+            </div>
+
+            <div>
+                @Html.TextAreaFor(m => m.eAddress)
+                @Html.ValidationMessageFor(m => m.eAddress)
+            </div>
+
+            <div>
+                <label>Phone:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.ePhone)
+                @Html.ValidationMessageFor(m => m.ePhone)
+            </div>
+
+            <div>
+                <label>Email:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.eEmail)
+                @Html.ValidationMessageFor(m => m.eEmail)
+            </div>
+
+            <div>
+                <label>Qualification:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.eQualification)
+                @Html.ValidationMessageFor(m => m.eQualification)
+            </div>
+
+            <div>
+                <label>Skill:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.eSkill)
+                @Html.ValidationMessageFor(m => m.eSkill)
+            </div>
+
+            <div>
+                <label>Experience:</label>
+            </div>
+
+            <div>
+                @Html.TextBoxFor(m => m.eExperience)
+                @Html.ValidationMessageFor(m => m.eExperience)
+            </div>
+
+            <div>
+                <label>Photo:</label>
+            </div>
+
+            <div>
+                @Html.TextBox("file", "", new { type = "file" })
+            </div>
+
+            <div>
+                <label>Gender:</label>
+            </div>
+
+            <div>
+                <label>
+                    @Html.RadioButtonFor(m => m.eGender, "Male")
+                    Male
+                </label>
+
+                <label>
+                    @Html.RadioButtonFor(m => m.eGender, "Female")
+                    Female
+                </label>
+
+                <label>
+                    @Html.RadioButtonFor(m => m.eGender, "Other")
+                    Other
+                </label>
+
+                @Html.ValidationMessageFor(m => m.eGender)
+            </div>
+
+            <div>
+                <label>Password:</label>
+            </div>
+
+            <div>
+                @Html.PasswordFor(m => m.ePassword)
+            </div>
+
+            <div>
+                <label>Confirm Password:</label>
+            </div>
+
+            <div>
+                @Html.PasswordFor(m => m.eConfirmPassword)
+                @Html.ValidationMessageFor(m => m.eConfirmPassword)
+            </div>
+
+            <div>
+                <input type="submit" value="Insert" />
+            </div>
+
+            <div>
+                @Html.DisplayFor(m => m.eMsg)
+            </div>}
+    </div>*@

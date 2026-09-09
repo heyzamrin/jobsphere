@@ -1,0 +1,211 @@
+﻿```cshtml
+<h2>Display All Jobs</h2>
+
+@using(Html.BeginForm("JobSearchClick", "JobSearch", FormMethod.Get))
+{
+    <div class="search-box">
+
+        <div>
+            <label>Search</label>
+            @Html.TextBox("JobTitle", null, new { @class = "search-input" })
+        </div>
+
+        <div>
+            <label>Experience</label>
+            @Html.TextBox("JobExperience", null, new { @class = "search-input" })
+        </div>
+
+        <div>
+            <label>Location</label>
+            @Html.TextBox("JobLocation", null, new { @class = "search-input" })
+        </div>
+
+        <div>
+            <label>Skill</label>
+            @Html.TextBox("JobSkills", null, new { @class = "search-input" })
+        </div>
+
+        <div>
+            <label>&nbsp;</label>
+            <input type="submit" value="Search" class="search-button" />
+        </div>
+
+    </div>
+
+    <br />
+
+    <table id="T01" class="job-table">
+
+        <tr>
+            <th>Company Name</th>
+            <th>Job Title</th>
+            <th>Experience</th>
+            <th>Skill</th>
+            <th>Location</th>
+            <th>Qualification</th>
+            <th>Salary</th>
+            <th>Post Date</th>
+            <th>End Date</th>
+            <th>Job Status</th>
+        </tr>
+
+        @foreach (var item in ViewBag.JobDetails)
+        {
+            <tr>
+                <td>@item.CompanyId</td>
+                <td>@item.JobTitle</td>
+                <td>@item.Experience</td>
+                <td>@item.Skill</td>
+                <td>@item.Location</td>
+                <td>@item.Qualification</td>
+                <td>@item.Salary</td>
+                <td>@item.PostDate</td>
+                <td>@item.EndDate</td>
+                <td>@item.JobStatus</td>
+            </tr>
+        }
+
+    </table>
+}
+
+<style>
+
+    .search-box {
+        display: flex;
+        gap: 20px;
+        align-items: end;
+        padding: 15px;
+        background-color: #eeeeee;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+        .search-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+    .search-input {
+        width: 180px;
+        padding: 9px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .search-button {
+        padding: 9px 25px;
+        background-color: #078ee5;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .job-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .job-table th {
+            background-color: #078ee5;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .job-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .job-table tr:nth-child(even) {
+            background-color: #eeeeee;
+        }
+
+        .job-table tr:nth-child(odd) {
+            background-color: white;
+        }
+</style>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*```cshtml
+    <h2>Display All Jobs</h2>
+
+    @using (Html.BeginForm("DisplayPageLoad", "DisplayAll", FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td>Search</td>
+                <td>Experience</td>
+                <td>Location</td>
+                <td>Skill</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.TextBox("search")
+                </td>
+                <td>
+                    @Html.TextBox("experience")
+                </td>
+                <td>
+                    @Html.TextBox("location")
+                </td>
+                <td>
+                    @Html.TextBox("skill")
+                </td>
+                <td>
+                    <input type="submit" value="Search" />
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <table id="T01" class="table table-hover">
+            <tr>
+                <th>Company Name</th>
+                <th>Job Title</th>
+                <th>Experience</th>
+                <th>Skill</th>
+                <th>Location</th>
+                <th>Qualification</th>
+                <th>Salary</th>
+                <th>Post Date</th>
+                <th>End Date</th>
+                <th>Job Status</th>
+            </tr>
+
+            @foreach (var item in ViewBag.JobDetails)
+            {
+                <tr>
+                    <td>@item.ComName</td>
+                    <td>@item.JobTitle</td>
+                    <td>@item.Experience</td>
+                    <td>@item.Skill</td>
+                    <td>@item.Location</td>
+                    <td>@item.Qualification</td>
+                    <td>@item.Salary</td>
+                    <td>@item.PostDate</td>
+                    <td>@item.EndDate</td>
+                    <td>@item.JobStatus</td>
+                </tr>
+            }
+        </table>
+    }
+    ```*@

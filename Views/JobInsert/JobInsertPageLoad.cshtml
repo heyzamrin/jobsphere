@@ -1,0 +1,373 @@
+﻿
+@model MVCProjectOne.Models.JobInsertClass
+
+@{
+    ViewBag.Title = "Job Registration";
+}
+
+<style>
+
+    body {
+        background-color: #f5f7fb;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .job-container {
+        width: 500px;
+        margin: 35px auto;
+        background-color: #ffffff;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border: 1px solid #edf0f4;
+    }
+
+        /* ================= TITLE ================= */
+
+        .job-container h1 {
+            text-align: center;
+            margin: 0 0 28px;
+            color: #063970;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+    /* ================= FORM ================= */
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #444444;
+            font-size: 14px;
+        }
+
+    /* ================= INPUT ================= */
+
+    .form-control {
+        width: 100%;
+        height: 42px;
+        padding: 10px 12px;
+        border: 1px solid #d5d9e0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 14px;
+        outline: none;
+        display: block;
+    }
+
+        .form-control:focus {
+            border-color: #063970;
+            box-shadow: 0 0 0 2px rgba(6,57,112,0.08);
+        }
+
+    /* ================= VALIDATION ================= */
+
+    .validation {
+        color: #d9534f;
+        font-size: 13px;
+        display: block;
+        margin-top: 5px;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .button-section {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .insert-btn {
+        width: 100%;
+        height: 44px;
+        padding: 10px;
+        background-color: #063970;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+        .insert-btn:hover {
+            background-color: #042b55;
+        }
+
+    /* ================= MESSAGE ================= */
+
+    .success-message {
+        margin-top: 15px;
+        padding: 10px;
+        color: #168044;
+        background-color: #e8f7ee;
+        border: 1px solid #b7e4c7;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @@media (max-width: 600px) {
+
+        .job-container {
+            width: auto;
+            margin: 20px 10px;
+            padding: 25px 20px;
+        }
+
+            .job-container h1 {
+                font-size: 24px;
+            }
+    }
+</style>
+
+<div class="job-container">
+
+    <h1>Job Registration</h1>
+
+    @using (Html.BeginForm("JobInsertClick", "JobInsert", FormMethod.Post))
+    {
+        <div class="form-group">
+
+            <label>Job Title:</label>
+
+            @Html.TextBoxFor(m => m.jTitle, new
+            {
+                @class = "form-control",
+                placeholder = "Enter job title"
+            })
+
+            @Html.ValidationMessageFor(m => m.jTitle, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Experience:</label>
+
+            @Html.TextBoxFor(m => m.jExperience, new
+            {
+                @class = "form-control",
+                placeholder = "Example: 0-1 Years"
+            })
+
+            @Html.ValidationMessageFor(m => m.jExperience, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Skill:</label>
+
+            @Html.TextBoxFor(m => m.jSkill, new
+            {
+                @class = "form-control",
+                placeholder = "Example: C#, ASP.NET, SQL"
+            })
+
+            @Html.ValidationMessageFor(m => m.jSkill, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Location:</label>
+
+            @Html.TextBoxFor(m => m.jLocation, new
+            {
+                @class = "form-control",
+                placeholder = "Enter job location"
+            })
+
+            @Html.ValidationMessageFor(m => m.jLocation, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Qualification:</label>
+
+            @Html.TextBoxFor(m => m.jQualification, new
+            {
+                @class = "form-control",
+                placeholder = "Example: BCA / B.Sc Computer Science"
+            })
+
+            @Html.ValidationMessageFor(m => m.jQualification, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Salary:</label>
+
+            @Html.TextBoxFor(m => m.jSalary, new
+            {
+                @class = "form-control",
+                placeholder = "Enter salary"
+            })
+
+            @Html.ValidationMessageFor(m => m.jSalary, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Post Date:</label>
+
+            @Html.TextBoxFor(
+                m => m.jPostDate,
+                "{0:yyyy-MM-dd}",
+                new
+                {
+                    @class = "form-control",
+                    type = "date"
+                }
+            )
+
+            @Html.ValidationMessageFor(m => m.jPostDate, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>End Date:</label>
+
+            @Html.TextBoxFor(
+                m => m.jEndDate,
+                "{0:yyyy-MM-dd}",
+                new
+                {
+                    @class = "form-control",
+                    type = "date"
+                }
+            )
+
+            @Html.ValidationMessageFor(m => m.jEndDate, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="button-section">
+
+            <input type="submit"
+                   value="Add Job"
+                   class="insert-btn" />
+
+            @if (Model != null && !string.IsNullOrEmpty(Model.jMsg))
+            {
+                <div class="success-message">
+                    @Model.jMsg
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
+
+
+
+
+
+
+@*@model MVCProjectOne.Models.JobInsertClass
+
+    @{
+        ViewBag.Title = "JobInsertPageLoad";
+    }
+
+    <h2>Job Registration</h2>
+
+    @using (Html.BeginForm("JobInsertClick", "JobInsert", FormMethod.Post))
+    {<div>
+            <label>Job Title:</label>
+            @Html.TextBoxFor(m => m.jTitle)
+            @Html.ValidationMessageFor(m => m.jTitle)
+        </div>
+
+
+        <div>
+            <label>Experience:</label>
+            @Html.TextBoxFor(m => m.jExperience)
+            @Html.ValidationMessageFor(m => m.jExperience)
+        </div>
+
+        <div>
+            <label>Skill:</label>
+            @Html.TextBoxFor(m => m.jSkill)
+            @Html.ValidationMessageFor(m => m.jSkill)
+        </div>
+
+        <div>
+            <label>Location:</label>
+            @Html.TextBoxFor(m => m.jLocation)
+            @Html.ValidationMessageFor(m => m.jLocation)
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+            @Html.TextBoxFor(m => m.jQualification)
+            @Html.ValidationMessageFor(m => m.jQualification)
+        </div>
+
+        <div>
+            <label>Salary:</label>
+            @Html.TextBoxFor(m => m.jSalary)
+            @Html.ValidationMessageFor(m => m.jSalary)
+        </div>
+
+        <div>
+            <label>Post Date:</label>
+            @Html.TextBoxFor(m => m.jPostDate, "{0:yyyy-MM-dd}", new { type = "date" })
+            @Html.ValidationMessageFor(m => m.jPostDate)
+        </div>
+
+        <div>
+            <label>End Date:</label>
+            @Html.TextBoxFor(m => m.jEndDate, "{0:yyyy-MM-dd}", new { type = "date" })
+            @Html.ValidationMessageFor(m => m.jEndDate)
+        </div>
+
+        <div>
+            <input type="submit" value="Add Job" />
+        </div>
+
+
+    }
+
+    @if (Model != null && !string.IsNullOrEmpty(Model.jMsg))
+    {<p>@Model.jMsg</p>
+    }*@

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MVCProject1ModelStoreContainer" CdmEntityContainer="MVCProject1Entities">
+    <EntitySetMapping Name="CompanyJobDetailsTabs">
+      <EntityTypeMapping TypeName="MVCProject1Model.CompanyJobDetailsTab">
+        <MappingFragment StoreEntitySet="CompanyJobDetailsTab">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyRegTabs">
+      <EntityTypeMapping TypeName="MVCProject1Model.CompanyRegTab">
+        <MappingFragment StoreEntitySet="CompanyRegTab">
+          <ScalarProperty Name="ComId" ColumnName="ComId" />
+          <ScalarProperty Name="ComName" ColumnName="ComName" />
+          <ScalarProperty Name="ComAddress" ColumnName="ComAddress" />
+          <ScalarProperty Name="ComPhone" ColumnName="ComPhone" />
+          <ScalarProperty Name="ComEmail" ColumnName="ComEmail" />
+          <ScalarProperty Name="ComPassword" ColumnName="ComPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeRegTabs">
+      <EntityTypeMapping TypeName="MVCProject1Model.EmployeeRegTab">
+        <MappingFragment StoreEntitySet="EmployeeRegTab">
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpAge" ColumnName="EmpAge" />
+          <ScalarProperty Name="EmpAddress" ColumnName="EmpAddress" />
+          <ScalarProperty Name="EmpPhone" ColumnName="EmpPhone" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="EmpQualification" ColumnName="EmpQualification" />
+          <ScalarProperty Name="EmpSkills" ColumnName="EmpSkills" />
+          <ScalarProperty Name="EmpExperience" ColumnName="EmpExperience" />
+          <ScalarProperty Name="EmpPhoto" ColumnName="EmpPhoto" />
+          <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+          <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobApplicationTabs">
+      <EntityTypeMapping TypeName="MVCProject1Model.JobApplicationTab">
+        <MappingFragment StoreEntitySet="JobApplicationTab">
+          <ScalarProperty Name="JobApplicationId" ColumnName="JobApplicationId" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+          <ScalarProperty Name="Resume" ColumnName="Resume" />
+          <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginTabs">
+      <EntityTypeMapping TypeName="MVCProject1Model.LoginTab">
+        <MappingFragment StoreEntitySet="LoginTab">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spLoginCountId" FunctionName="MVCProject1Model.Store.spLoginCountId" />
+    <FunctionImportMapping FunctionImportName="spLoginId" FunctionName="MVCProject1Model.Store.spLoginId" />
+    <FunctionImportMapping FunctionImportName="spLoginInsert" FunctionName="MVCProject1Model.Store.spLoginInsert" />
+    <FunctionImportMapping FunctionImportName="spLoginType" FunctionName="MVCProject1Model.Store.spLoginType" />
+    <FunctionImportMapping FunctionImportName="spMaxLogId" FunctionName="MVCProject1Model.Store.spMaxLogId" />
+    <FunctionImportMapping FunctionImportName="spEmployeeReg" FunctionName="MVCProject1Model.Store.spEmployeeReg" />
+    <FunctionImportMapping FunctionImportName="spCompanyReg" FunctionName="MVCProject1Model.Store.spCompanyReg" />
+    <FunctionImportMapping FunctionImportName="spCompanyJobInsert" FunctionName="MVCProject1Model.Store.spCompanyJobInsert" />
+    <FunctionImportMapping FunctionImportName="spJobDisplay" FunctionName="MVCProject1Model.Store.spJobDisplay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProject1Model.spJobDisplay_Result1">
+          <ScalarProperty Name="ComName" ColumnName="ComName" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spJobSearch" FunctionName="MVCProject1Model.Store.spJobSearch" />
+  </EntityContainerMapping>
+</Mapping>

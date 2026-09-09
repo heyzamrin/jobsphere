@@ -1,0 +1,334 @@
+﻿
+@model MVCProjectOne.Models.CompanyInsertClass
+
+@{
+    ViewBag.Title = "Company Registration";
+}
+
+<style>
+
+    body {
+        background-color: #f5f7fb;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .company-container {
+        width: 500px;
+        margin: 35px auto;
+        background-color: #ffffff;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border: 1px solid #edf0f4;
+    }
+
+        /* ================= TITLE ================= */
+
+        .company-container h1 {
+            text-align: center;
+            margin: 0 0 28px;
+            color: #063970;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+    /* ================= FORM ================= */
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #444444;
+            font-size: 14px;
+        }
+
+    /* ================= INPUT ================= */
+
+    .form-control {
+        width: 100%;
+        height: 42px;
+        padding: 10px 12px;
+        border: 1px solid #d5d9e0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 14px;
+        outline: none;
+        display: block;
+    }
+
+        .form-control:focus {
+            border-color: #063970;
+            box-shadow: 0 0 0 2px rgba(6,57,112,0.08);
+        }
+
+    /* ================= TEXTAREA ================= */
+
+    textarea.form-control {
+        height: 80px;
+        resize: vertical;
+    }
+
+    /* ================= VALIDATION ================= */
+
+    .validation {
+        color: #d9534f;
+        font-size: 13px;
+        display: block;
+        margin-top: 5px;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .button-section {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .insert-btn {
+        width: 100%;
+        height: 44px;
+        padding: 10px;
+        background-color: #063970;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+        .insert-btn:hover {
+            background-color: #042b55;
+        }
+
+    /* ================= MESSAGE ================= */
+
+    .success-message {
+        margin-top: 15px;
+        padding: 10px;
+        color: #168044;
+        background-color: #e8f7ee;
+        border: 1px solid #b7e4c7;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @@media (max-width: 600px) {
+
+        .company-container {
+            width: auto;
+            margin: 20px 10px;
+            padding: 25px 20px;
+        }
+
+            .company-container h1 {
+                font-size: 24px;
+            }
+    }
+</style>
+
+<div class="company-container">
+
+    <h1>Company Registration</h1>
+
+    @using (Html.BeginForm("InsertCompanyclick", "CompanyReg", FormMethod.Post))
+    {
+        <div class="form-group">
+
+            <label>Name:</label>
+
+            @Html.TextBoxFor(m => m.cName, new
+            {
+                @class = "form-control",
+                placeholder = "Enter company name"
+            })
+
+            @Html.ValidationMessageFor(m => m.cName, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Address:</label>
+
+            @Html.TextAreaFor(m => m.cAddress, new
+            {
+                @class = "form-control",
+                placeholder = "Enter company address"
+            })
+
+            @Html.ValidationMessageFor(m => m.cAddress, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Phone:</label>
+
+            @Html.TextBoxFor(m => m.cPhone, new
+            {
+                @class = "form-control",
+                placeholder = "Enter 10-digit phone number"
+            })
+
+            @Html.ValidationMessageFor(m => m.cPhone, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Email:</label>
+
+            @Html.TextBoxFor(m => m.cEmail, new
+            {
+                @class = "form-control",
+                placeholder = "Enter email address"
+            })
+
+            @Html.ValidationMessageFor(m => m.cEmail, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Password:</label>
+
+            @Html.PasswordFor(m => m.cPassword, new
+            {
+                @class = "form-control",
+                placeholder = "Enter password"
+            })
+
+            @Html.ValidationMessageFor(m => m.cPassword, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Confirm Password:</label>
+
+            @Html.PasswordFor(m => m.cConfirmPassword, new
+            {
+                @class = "form-control",
+                placeholder = "Confirm password"
+            })
+
+            @Html.ValidationMessageFor(m => m.cConfirmPassword, "", new
+            {
+                @class = "validation"
+            })
+
+        </div>
+
+        <div class="button-section">
+
+            <input type="submit"
+                   value="Register Company"
+                   class="insert-btn" />
+
+            @if (Model != null && !string.IsNullOrEmpty(Model.cMsg))
+            {
+                <div class="success-message">
+                    @Model.cMsg
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
+
+@*@model MVCProjectOne.Models.CompanyInsertClass
+
+    @{
+        ViewBag.Title = "InsertAdminPageLoad";
+    }
+
+    <h2>Company Registration</h2>
+
+    @using (Html.BeginForm("InsertCompanyclick", "CompanyReg", FormMethod.Post))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+
+        <div>
+            @Html.TextBoxFor(m => m.cName)
+            @Html.ValidationMessageFor(m => m.cName)
+        </div>
+
+        <div>
+            <label>Address:</label>
+        </div>
+
+        <div>
+            @Html.TextAreaFor(m => m.cAddress)
+            @Html.ValidationMessageFor(m => m.cAddress)
+        </div>
+
+        <div>
+            <label>Phone:</label>
+        </div>
+
+        <div>
+            @Html.TextBoxFor(m => m.cPhone)
+            @Html.ValidationMessageFor(m => m.cPhone)
+        </div>
+
+        <div>
+            <label>Email:</label>
+        </div>
+
+        <div>
+            @Html.TextBoxFor(m => m.cEmail)
+            @Html.ValidationMessageFor(m => m.cEmail)
+        </div>
+
+
+        <div>
+            <label>Password:</label>
+        </div>
+
+        <div>
+            @Html.PasswordFor(m => m.cPassword)
+        </div>
+
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+
+        <div>
+            @Html.PasswordFor(m => m.cConfirmPassword)
+            @Html.ValidationMessageFor(m => m.cConfirmPassword)
+        </div>
+
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.cMsg)
+        </div>
+    }*@
