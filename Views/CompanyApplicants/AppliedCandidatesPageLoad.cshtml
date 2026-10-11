@@ -1,0 +1,180 @@
+﻿
+@model IEnumerable<MVCProjectOne.JobApplicationTab>
+
+@{
+    ViewBag.Title = "Applied Candidates";
+}
+
+<style>
+    .applicants-container {
+        padding: 35px;
+        font-family: Arial, sans-serif;
+        background: #f5f7fb;
+        min-height: 80vh;
+    }
+
+    .page-title {
+        color: #063970;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .table-container {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow-x: auto;
+    }
+
+    .applicants-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .applicants-table th {
+            background: #063970;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .applicants-table td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #333;
+        }
+
+        .applicants-table tbody tr:hover {
+            background: #f5f7fb;
+        }
+
+    .status {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-radius: 15px;
+    }
+
+    .resume-link {
+        color: #063970;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .resume-link:hover {
+            text-decoration: underline;
+        }
+
+    .empty-message {
+        text-align: center;
+        padding: 30px !important;
+        color: #777 !important;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 22px;
+        color: #063970;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="applicants-container">
+
+    <h2 class="page-title">Applied Candidates</h2>
+
+    <p class="page-subtitle">
+        View candidates who applied for your job postings.
+    </p>
+
+    <div class="table-container">
+
+        <table class="applicants-table">
+
+            <thead>
+                <tr>
+                    <th>Candidate Name</th>
+                    <th>Job ID</th>
+                    <th>Resume</th>
+                    <th>Application Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.EmployeeRegTab != null)
+                                {
+                                    @item.EmployeeRegTab.EmpName
+                                }
+                                else
+                                {
+                                    <span>Not available</span>
+                                }
+                            </td>
+
+                            <td>
+                                @item.JobId
+                            </td>
+
+                            <td>
+                                @if (!String.IsNullOrEmpty(item.Resume))
+                                {
+                                    <a class="resume-link"
+                                       href="@Url.Content(item.Resume)"
+                                       target="_blank">
+                                        View Resume
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span>Not uploaded</span>
+                                }
+                            </td>
+
+                            <td>
+                                <span class="status">
+                                    @item.ApplicationStatus
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="empty-message">
+                            No candidates have applied yet.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <a href="@Url.Action("CompanyHomePageLoad", "CompanyReg")"
+       class="back-link">
+        &larr; Back to Company Dashboard
+    </a>
+
+</div>

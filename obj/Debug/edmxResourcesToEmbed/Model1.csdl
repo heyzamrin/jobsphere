@@ -17,6 +17,7 @@
     <Property Name="JobStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CompanyRegTab" Relationship="Self.FK_CompanyJobDetails_Company" FromRole="CompanyJobDetailsTab" ToRole="CompanyRegTab" />
     <NavigationProperty Name="JobApplicationTabs" Relationship="Self.FK_JobApplication_Job" FromRole="CompanyJobDetailsTab" ToRole="JobApplicationTab" />
+    <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CompanyRegTab">
     <Key>

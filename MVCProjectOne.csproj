@@ -134,9 +134,11 @@
     <Compile Include="CompanyRegTab.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CompanyApplicantsController.cs" />
     <Compile Include="Controllers\CompanyRegController.cs" />
     <Compile Include="Controllers\EmployeeRegController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobApplicationController.cs" />
     <Compile Include="Controllers\JobInsertController.cs" />
     <Compile Include="Controllers\JobSearchController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -241,6 +243,8 @@
     <Content Include="Views\CompanyReg\AddCompanyJobDetailsPageLoad.cshtml" />
     <Content Include="Views\JobInsert\JobInsertPageLoad.cshtml" />
     <Content Include="Views\JobSearch\JobSearchPageLoad.cshtml" />
+    <Content Include="Views\JobApplication\ApplyJobPageLoad.cshtml" />
+    <Content Include="Views\CompanyApplicants\AppliedCandidatesPageLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

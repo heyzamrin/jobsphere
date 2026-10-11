@@ -1,3 +1,267 @@
-﻿<h2>Company Home</h2>
+﻿
+@model IEnumerable<MVCProjectOne.JobApplicationTab>
 
-@Html.ActionLink("Add Job Details", "JobInsertPageLoad", "JobInsert")
+@{
+    ViewBag.Title = "Company Home";
+    int totalApplications = Model == null ? 0 : Model.Count();
+}
+
+<style>
+    .company-home {
+        padding: 10px 0;
+    }
+
+    .welcome-card {
+        background: linear-gradient(135deg, #063970, #285a91);
+        color: white;
+        padding: 30px;
+        border-radius: 16px;
+        margin-bottom: 25px;
+    }
+
+        .welcome-card h2 {
+            color: white;
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        .welcome-card p {
+            color: #e8eef7;
+            margin-bottom: 0;
+        }
+
+    .dashboard-card {
+        background: white;
+        border: 1px solid #e8edf4;
+        border-radius: 14px;
+        padding: 24px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(20, 40, 80, 0.04);
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .stat-number {
+        color: #063970;
+        font-size: 32px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .add-job-link {
+        display: inline-block;
+        background: #063970;
+        color: white !important;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none !important;
+        font-weight: bold;
+        margin-top: 12px;
+    }
+
+        .add-job-link:hover {
+            background: #042b55;
+        }
+
+    .section-title {
+        color: #063970;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .candidate-search {
+        width: 100%;
+        padding: 11px 14px;
+        border: 1px solid #d9e0ea;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        outline: none;
+    }
+
+        .candidate-search:focus {
+            border-color: #063970;
+        }
+
+    .application-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .application-table th {
+            background: #f5f7fb;
+            color: #063970;
+            padding: 14px 12px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .application-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #edf0f5;
+            vertical-align: middle;
+        }
+
+        .application-table tbody tr:hover {
+            background: #fafcff;
+        }
+
+    .resume-link {
+        color: #063970;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .status-text {
+        display: inline-block;
+        padding: 6px 10px;
+        background: #edf3fb;
+        color: #063970;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+
+    .empty-message {
+        padding: 30px;
+        text-align: center;
+        color: #777;
+    }
+
+    .table-responsive-custom {
+        overflow-x: auto;
+    }
+</style>
+
+<div class="company-home">
+
+    <!-- Welcome section -->
+    <div class="welcome-card">
+        <h2>Welcome to JobSphere!</h2>
+        <p>Manage your job postings and review candidates who applied to your jobs.</p>
+
+        @Html.ActionLink(
+            "+ Add Job Details",
+            "JobInsertPageLoad",
+            "JobInsert",
+            null,
+            new { @class = "add-job-link" }
+        )
+    </div>
+
+    <!-- Application count -->
+    <div class="dashboard-card">
+        <div class="stat-label">Total Applications</div>
+        <div class="stat-number">@totalApplications</div>
+        <div class="stat-label">Applications received for your job postings</div>
+    </div>
+
+    <!-- Applications list -->
+    <div class="dashboard-card">
+
+        <h3 class="section-title">Candidate Applications</h3>
+
+        <input type="text"
+               id="candidateSearch"
+               class="candidate-search"
+               placeholder="Search by candidate name, job title or status..." />
+
+        <div class="table-responsive-custom">
+            <table class="application-table">
+                <thead>
+                    <tr>
+                        <th>Candidate Name</th>
+                        <th>Job Name</th>
+                        <th>Resume</th>
+                        <th>Application Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="applicationTableBody">
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (item.EmployeeRegTab != null)
+                                    {
+                                        @item.EmployeeRegTab.EmpName
+                                    }
+                                    else
+                                    {
+                                        <span>Candidate</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (item.CompanyJobDetailsTab != null)
+                                    {
+                                        @item.CompanyJobDetailsTab.JobTitle
+                                    }
+                                    else
+                                    {
+                                        <span>Job</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (!String.IsNullOrEmpty(item.Resume))
+                                    {
+                                        <a class="resume-link"
+                                           href="@Url.Content(item.Resume)"
+                                           target="_blank">
+                                            View Resume
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span>Not uploaded</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    <span class="status-text">
+                                        @item.ApplicationStatus
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="empty-message">
+                                No applications found for your jobs yet.
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#candidateSearch").on("keyup", function () {
+                var searchValue = $(this).val().toLowerCase();
+
+                $("#applicationTableBody tr").each(function () {
+                    var rowText = $(this).text().toLowerCase();
+
+                    if (rowText.indexOf(searchValue) > -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

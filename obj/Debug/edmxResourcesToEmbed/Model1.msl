@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CompanyJobDetailsTabs">
       <EntityTypeMapping TypeName="MVCProject1Model.CompanyJobDetailsTab">
         <MappingFragment StoreEntitySet="CompanyJobDetailsTab">
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
           <ScalarProperty Name="JobId" ColumnName="JobId" />
           <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
           <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />

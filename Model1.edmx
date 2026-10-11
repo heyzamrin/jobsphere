@@ -20,6 +20,7 @@
           <Property Name="PostDate" Type="date" />
           <Property Name="EndDate" Type="date" />
           <Property Name="JobStatus" Type="varchar" MaxLength="20" />
+          <Property Name="JobDescription" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="CompanyRegTab">
           <Key>
@@ -203,6 +204,7 @@
           <Property Name="JobStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CompanyRegTab" Relationship="Self.FK_CompanyJobDetails_Company" FromRole="CompanyJobDetailsTab" ToRole="CompanyRegTab" />
           <NavigationProperty Name="JobApplicationTabs" Relationship="Self.FK_JobApplication_Job" FromRole="CompanyJobDetailsTab" ToRole="JobApplicationTab" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CompanyRegTab">
           <Key>
@@ -403,6 +405,7 @@
           <EntitySetMapping Name="CompanyJobDetailsTabs">
             <EntityTypeMapping TypeName="MVCProject1Model.CompanyJobDetailsTab">
               <MappingFragment StoreEntitySet="CompanyJobDetailsTab">
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
                 <ScalarProperty Name="JobId" ColumnName="JobId" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />

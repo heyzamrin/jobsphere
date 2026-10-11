@@ -99,134 +99,140 @@
 
         @foreach (var item in Model.SelectJob)
         {
-            <div class="job-card">
+        <div class="job-card">
 
 
-                <!-- ================= JOB TOP ================= -->
+            <!-- ================= JOB TOP ================= -->
 
-                <div class="job-top">
+            <div class="job-top">
 
-                    <div>
+                <div>
 
-                        <h3>@item.JobTitle</h3>
+                    <h3>@item.JobTitle</h3>
 
-                        <span class="status">
-                            @item.JobStatus
-                        </span>
-
-                    </div>
-
-
-                    <div class="salary">
-
-                        ₹ @item.Salary
-
-                    </div>
+                    <span class="status">
+                        @item.JobStatus
+                    </span>
 
                 </div>
 
 
-                <!-- ================= JOB DETAILS ================= -->
+                <div class="salary">
 
-                <div class="job-details">
+                    ₹ @item.Salary
 
+                </div>
 
-                    <div class="detail">
-
-                        <span class="label">
-                            Experience
-                        </span>
-
-                        <span>
-                            @item.Experience
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <div class="detail">
+            <!-- ================= JOB DETAILS ================= -->
 
-                        <span class="label">
-                            Location
-                        </span>
-
-                        <span>
-                            @item.Location
-                        </span>
-
-                    </div>
+            <div class="job-details">
 
 
-                    <div class="detail">
+                <div class="detail">
 
-                        <span class="label">
-                            Skills
-                        </span>
+                    <span class="label">
+                        Experience
+                    </span>
 
-                        <span>
-                            @item.Skill
-                        </span>
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <span class="label">
-                            Qualification
-                        </span>
-
-                        <span>
-                            @item.Qualification
-                        </span>
-
-                    </div>
+                    <span>
+                        @item.Experience
+                    </span>
 
                 </div>
 
 
-                <!-- ================= DATES ================= -->
+                <div class="detail">
 
-                <div class="job-bottom">
+                    <span class="label">
+                        Location
+                    </span>
 
-
-                    <div>
-
-                        <span class="date-label">
-                            Posted:
-                        </span>
-
-                        @item.PostDate
-
-                    </div>
-
-
-                    <div>
-
-                        <span class="date-label">
-                            Last Date:
-                        </span>
-
-                        @item.EndDate
-
-                    </div>
-
+                    <span>
+                        @item.Location
+                    </span>
 
                 </div>
 
 
-                <!-- ================= APPLY BUTTON ================= -->
+                <div class="detail">
 
-                <div class="apply-section">
+                    <span class="label">
+                        Skills
+                    </span>
 
-                    <input type="button"
-                           value="Apply Now"
-                           class="apply-button" />
+                    <span>
+                        @item.Skill
+                    </span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="label">
+                        Qualification
+                    </span>
+
+                    <span>
+                        @item.Qualification
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DATES ================= -->
+
+            <div class="job-bottom">
+
+
+                <div>
+
+                    <span class="date-label">
+                        Posted:
+                    </span>
+
+                    @item.PostDate
+
+                </div>
+
+
+                <div>
+
+                    <span class="date-label">
+                        Last Date:
+                    </span>
+
+                    @item.EndDate
 
                 </div>
 
 
             </div>
+
+
+            <!-- ================= APPLY BUTTON ================= -->
+
+
+            <div class="apply-section">
+
+                @Html.ActionLink(
+                    "Apply Now",
+                    "ApplyJobPageLoad",
+                    "JobApplication",
+                    new { id = item.JobId },
+                    new { @class = "apply-button" }
+                )
+
+            </div>
+
+
+
+        </div>
         }
 
     </div>
@@ -479,6 +485,10 @@
         text-align: right;
     }
 
+    .apply-button {
+        display: inline-block;
+        text-decoration: none;
+    }
 
     .apply-button {
         background-color: #ffffff;

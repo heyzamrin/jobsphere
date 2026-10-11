@@ -31,6 +31,7 @@ namespace MVCProjectOne
         public Nullable<System.DateTime> PostDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public string JobStatus { get; set; }
+        public string JobDescription { get; set; }
     
         public virtual CompanyRegTab CompanyRegTab { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
